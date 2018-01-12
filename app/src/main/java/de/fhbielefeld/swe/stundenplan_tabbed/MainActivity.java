@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Fach> Donnerstag = new ArrayList<>();
     public ArrayList<Fach> Freitag = new ArrayList<>();
 
-    public void addFach(String s, String n, String t, String b, String e, String r, String d, String k, boolean ak, ArrayList<Fach> Faecher)
+    public void addFach(String s, String n, String t, String b, String e, String r, String d, String k, boolean ak)
     {
         Fach tmpfach = new Fach(s, n, t, b, e, r, d, k, ak);
-        Faecher.add(tmpfach);
+        Katalog.add(tmpfach);
     }
 
     private void writeBackup(){
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 String[] tokens = line.split(";");
 
                 //Read the data
-                addFach(tokens[0], tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7], false, Katalog);
+                addFach(tokens[0], tokens[1],tokens[2],tokens[3],tokens[4],tokens[5],tokens[6],tokens[7], false);
                 Log.d("ReadStundenplan", "Just created: " + Katalog.get(Katalog.size() - 1));
 
                 //
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 String[] tokens = endstring.split(";");
                 check = Boolean.valueOf(tokens[8]);
-                addFach(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], check, Katalog);
+                addFach(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], check);
                 Log.d("ReadSharedPref", "Just created: " + Katalog.get(Katalog.size() - 1));
                 i++;
                 Log.d("In While Schleife", "Zählvariable " + i);
@@ -186,6 +186,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }
